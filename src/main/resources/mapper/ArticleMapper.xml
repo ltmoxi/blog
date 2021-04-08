@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gbq.boot.web.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.gbq.boot.web.bean.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="articleName" property="articleName" jdbcType="VARCHAR" />
+    <result column="articleHeadPic" property="articleHeadPic" jdbcType="VARCHAR" />
+    <result column="articleContent" property="articleContent" jdbcType="LONGVARCHAR" />
+    <result column="articleTag" property="articleTag" jdbcType="VARCHAR" />
+    <result column="articleRemark" property="articleRemark" jdbcType="VARCHAR" />
+    <result column="articleReadCount" property="articleReadCount" jdbcType="INTEGER" />
+    <result column="managerId" property="managerId" jdbcType="INTEGER" />
+    <result column="managerName" property="managerName" jdbcType="VARCHAR" />
+    <result column="articleState" property="articleState" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <select id="searchTag" resultType="string">
+       select articleTag from blog_article where articleState = 0
+    </select>
+
+    <select id="searchTimeLine" resultType="com.gbq.boot.web.bean.Article">
+      SELECT
+        *
+      FROM
+        blog_article where id !=1 and articleState = 0
+      GROUP BY
+        id,
+        DATE_FORMAT(createTime, '%Y' )
+      ORDER BY
+       DATE_FORMAT(createTime, '%Y' ) desc
+        </select>
+</mapper>
