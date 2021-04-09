@@ -18,7 +18,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("blog_article")
-@Document(indexName = "article",type = "docs", shards = 1, replicas = 0)
+@Document(indexName = "article", type = "docs", shards = 1, replicas = 0)
 public class Article implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,10 +90,10 @@ public class Article implements Serializable {
     private String managerName;
 
     /**
-     *创建时间
+     * 创建时间
      */
     @Field(type = FieldType.Keyword)
-    @TableField(value = "createTime",fill = FieldFill.INSERT)
+    @TableField(value = "createTime", fill = FieldFill.INSERT)
     private String createTime;
 
     @TableField("articleType")
@@ -105,38 +105,37 @@ public class Article implements Serializable {
     @TableField("articleConNum")
     private Integer articleConNum;
 
-    @TableField("enclosure")
-    private String enclosure;
+//    @TableField("enclosure")
+//    private String enclosure;
 
     /**
      * 最新
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private boolean latest;
     /**
      * 点赞
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private boolean favorite;
     /**
      * 评论
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private boolean commentMost;
     /**
      * 阅读量
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private boolean recommend;
 
-    public String[] getTags(){
-        if (articleTag != null){
+    public String[] getTags() {
+        if (articleTag != null) {
             String[] split = articleTag.split(",");
-            return  split;
+            return split;
         }
         return null;
     }
-
 
 
 }

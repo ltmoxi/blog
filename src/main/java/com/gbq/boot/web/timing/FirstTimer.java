@@ -30,9 +30,8 @@ public class FirstTimer implements ApplicationRunner {
         String triggerGroupName = "触发器组名";*/
 //        String time = "0/20 * * * * ? ";
 
-        // todo es还是要用的
-//        String time = "0 0 1 * * ?";
-//        //添加一个定时器任务
-//        quartzComment.addJob(ArticleJob.class,time);
+        String time = "0 0 1 * * ?";
+        //添加一个定时器任务
+        quartzComment.addJob(ArticleJob.class,time);
     }
 }
