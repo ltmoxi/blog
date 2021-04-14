@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration >
-    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <property name="LOG_HOME" value="./logs/"/>
     <!-- 控制台输出 -->
@@ -33,7 +33,7 @@
     <logger name="java.sql.PreparedStatement" level="ERROR"/>
     <logger name="org.apache.zookeeper" level="ERROR"/>
 
-    <logger name="com.gbq.boot.web.mapper" level="DEBUG"/>
+    <logger name="com.whale.boot.web.mapper" level="DEBUG"/>
     <!-- 日志输出级别 -->
     <root level="info">
         <appender-ref ref="CONSOLE"/>

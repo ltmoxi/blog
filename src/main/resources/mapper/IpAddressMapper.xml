@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gbq.boot.web.mapper.IpAddressMapper">
+<mapper namespace="com.whale.boot.web.mapper.IpAddressMapper">
+    <!--    &lt;!&ndash; 通用查询映射结果 &ndash;&gt;-->
+    <!--    <resultMap id="BaseResultMap" type="com.whale.boot.web.bean.IpAddress">-->
+    <!--        <id column="id" property="id"/>-->
+    <!--        <result column="managerId" property="managerId"/>-->
+    <!--        <result column="ip" property="ip"/>-->
+    <!--        <result column="status" property="status"/>-->
+    <!--        <result column="loginTime" property="loginTime"/>-->
+    <!--    </resultMap>-->
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gbq.boot.web.bean.IpAddress">
-        <id column="id" property="id" />
-        <result column="managerId" property="managerId" />
-        <result column="ip" property="ip" />
-        <result column="status" property="status" />
-        <result column="loginTime" property="loginTime" />
-    </resultMap>
-
-    <select id="selectLists" resultType="com.gbq.boot.web.bean.IpAddress">
-        select blog_ip_address.* ,blog_manager.name as managerName from blog_ip_address left join blog_manager on
-        blog_ip_address.managerId = blog_manager.id
-        <trim prefix="WHERE"  prefixOverrides="AND|OR" >
+    <select id="selectLists" resultType="com.whale.boot.web.bean.IpAddress">
+        select blog_ip_address.*, blog_manager.name as managerName
+        from blog_ip_address
+                     left join blog_manager on
+                blog_ip_address.managerId = blog_manager.id
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
             <if test="example.managerName != null and example.managerName != ''">
-                or managerName like CONCAT('%',CONCAT('${example.managerName}','%'))
+                or managerName like CONCAT('%', CONCAT('${example.managerName}', '%'))
             </if>
             <if test="example.ip != null and example.ip != ''">
-                or ip like CONCAT('%',CONCAT('${example.ip}','%'))
+                 or ip like CONCAT(' % ',CONCAT(' ${example.ip}',' %'))
             </if>
-            group by  loginTime desc
+            group by loginTime desc
         </trim>
     </select>
-
 </mapper>
